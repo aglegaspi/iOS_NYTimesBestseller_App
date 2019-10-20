@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+struct CategoriesWrapper: Codable {
+    let results: [Categories]
+}
+
+struct Categories: Codable {
+    let listName: String
+
+    enum CodingKeys: String, CodingKey {
+        case listName = "list_name"
+    }
+}
