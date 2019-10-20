@@ -12,7 +12,7 @@ struct BookDetailAPIClient {
     
     static let manager = BookDetailAPIClient()
     
-    func getBookDetail(isbn: String, completionHandler: @escaping (Result<BookDetail?, AppError>) -> Void) {
+    func getBookDetail(isbn: String, completionHandler: @escaping (Result<[BookDetail]?, AppError>) -> Void) {
         
         let urlString = "https://www.googleapis.com/books/v1/volumes?q=+isbn:\(isbn)"
         
@@ -33,9 +33,9 @@ struct BookDetailAPIClient {
                 case let .success(data):
                     // TODO:
                     do {
-                        let response = try BookDetail.getBookDetails(from: data)
+                        let response = try BookDetail.getBookDetail(from: data)
                         completionHandler(.success(response))
-                        print(response)
+                        print(response!)
                     }
                     catch {
                         completionHandler(.failure(.couldNotParseJSON(rawError: error)))

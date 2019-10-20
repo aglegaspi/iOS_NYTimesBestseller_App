@@ -8,8 +8,8 @@
 
 import Foundation
 
-// MARK: - BestDetailWrapper
-struct BestDetailWrapper: Codable {
+// MARK: - BookDetailWrapper
+struct BookDetailWrapper: Codable {
     let items: [BookDetail]?
 }
 
@@ -19,6 +19,17 @@ struct BookDetail: Codable {
     let volumeInfo: VolumeInfo?
     let saleInfo: SaleInfo?
     let searchInfo: SearchInfo?
+    
+    static func getBookDetail(from data: Data) throws -> [BookDetail]? {
+        // TODO:
+        do {
+            let response = try JSONDecoder().decode(BookDetailWrapper.self,from: data)
+            return response.items
+        } catch {
+            return nil
+        }
+        
+    }
 }
 
 // MARK: - SaleInfo
