@@ -30,11 +30,11 @@ struct BestSeller: Codable {
         case bookInfo = "book_details"
     }
     
-    static func getBestSellers(from data: Data) throws -> BestSeller? {
+    static func getBestSellers(from data: Data) throws -> [BestSeller]? {
         // TODO:
         do {
-            let response = try JSONDecoder().decode(BestSeller.self,from: data)
-            return response
+            let response = try JSONDecoder().decode(BestSellerWrapper.self,from: data)
+            return response.results
         } catch {
             return nil
         }
