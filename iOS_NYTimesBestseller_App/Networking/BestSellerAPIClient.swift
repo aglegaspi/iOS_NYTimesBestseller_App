@@ -36,7 +36,7 @@ struct BestSellerAPIClient {
                     do {
                         let response = try BestSeller.getBestSellers(from: data)
                         completionHandler(.success(response))
-                        print(response)
+                        print(response!)
                     }
                     catch {
                         completionHandler(.failure(.couldNotParseJSON(rawError: error)))
