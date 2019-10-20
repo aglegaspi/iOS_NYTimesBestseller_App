@@ -9,25 +9,24 @@
 import XCTest
 
 class iOS_NYTimesBestseller_AppTests: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    
+    func testBestSellerModelFromJSON() {
+        
+        guard let path = Bundle.main.path(forResource: "bestsellers", ofType: "json") else { print("No Path To JSON Found"); return }
+        
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let bestsellersArr = try BestSeller.getBestSellers(from: data)
+            
+            XCTAssert(bestsellersArr!.count < 0, "We have \(bestsellersArr!.count) bestsellers!")
+            
+        } catch {
+            print(error)
+            XCTFail()
         }
+        
     }
-
+    
 }
