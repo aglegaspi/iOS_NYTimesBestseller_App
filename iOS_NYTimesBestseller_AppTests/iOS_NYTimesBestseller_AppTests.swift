@@ -20,7 +20,7 @@ class iOS_NYTimesBestseller_AppTests: XCTestCase {
             let data = try Data(contentsOf: url)
             let bestsellersArr = try BestSeller.getBestSellers(from: data)
             
-            XCTAssert(bestsellersArr!.count < 0, "We have \(bestsellersArr!.count) bestsellers!")
+            XCTAssert(bestsellersArr!.count > 0, "We have \(bestsellersArr!.count) bestsellers!")
             
         } catch {
             print(error)
