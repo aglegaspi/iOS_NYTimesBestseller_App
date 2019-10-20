@@ -18,4 +18,15 @@ struct Categories: Codable {
     enum CodingKeys: String, CodingKey {
         case listName = "list_name"
     }
+    
+    static func getCategories(from data: Data) throws -> [Categories]? {
+        // TODO:
+        do {
+            let response = try JSONDecoder().decode(CategoriesWrapper.self,from: data)
+            return response.results
+        } catch {
+            return nil
+        }
+        
+    }
 }
