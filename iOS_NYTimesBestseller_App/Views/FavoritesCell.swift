@@ -10,4 +10,20 @@ import UIKit
 
 class FavoritesCell: UICollectionViewCell {
     
+    lazy var textLabel: UILabel = {
+        var label = UILabel()
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private func setupTextLabel() {
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(textLabel)
+        NSLayoutConstraint.activate([
+            self.contentView.centerXAnchor.constraint(equalTo: textLabel.centerXAnchor),
+            self.contentView.centerYAnchor.constraint(equalTo: textLabel.centerYAnchor),
+        ])
+    }
+
 }
+
