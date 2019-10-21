@@ -15,13 +15,14 @@ class FavoritesVC: UIViewController {
     //MARK: VIEWS
     lazy var favoritesHeaderLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .red
+        label.backgroundColor = .systemPurple
         return label
     }()
     
     lazy var favoritesCollectionView: UICollectionView = {
-        let collectionView = UICollectionView()
-        collectionView.backgroundColor = .yellow
+        let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView.backgroundColor = .cyan
+//        collectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "favoriteCell")
         return collectionView
     }()
     
@@ -29,9 +30,14 @@ class FavoritesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSubviews()
+
+        self.view.backgroundColor = .cyan
+        favoritesCollectionView.delegate = self
+        favoritesCollectionView.dataSource = self
+        favoritesCollectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "favoriteCell")
+
         setUpConstraints()
-        self.favoritesCollectionView.dataSource = self
-        self.favoritesCollectionView.delegate = self
+        
         
         
     }
@@ -63,23 +69,33 @@ class FavoritesVC: UIViewController {
             favoritesCollectionView.topAnchor.constraint(equalTo: favoritesHeaderLabel.bottomAnchor),
             favoritesCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             favoritesCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            favoritesCollectionView.heightAnchor.constraint(equalToConstant: 300)
+            favoritesCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
 }
 
-extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegate {
+extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.data.count
     }
     
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCell.identifier, for: indexPath) as! FavoritesCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath) as! FavoritesCell
+        let selectedFavorite = data[indexPath.row]
         
-        cell.textLabel.text = data[indexPath.item]
+        
+        cell.weeksOnLabel.text = data[indexPath.item]
         return cell
     }
     
-}
+   
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: 400, height: 400)
+  
+         }
+    }
+
