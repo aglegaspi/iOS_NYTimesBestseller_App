@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3CBA899C235A5AFE00773215 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBA899B235A5AFE00773215 /* Secrets.swift */; };
+		3C855D49235DF643007F85C7 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855D48235DF643007F85C7 /* Secrets.swift */; };
 		EC216421235A4EAC0005335F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216420235A4EAC0005335F /* AppDelegate.swift */; };
 		EC216423235A4EAC0005335F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216422235A4EAC0005335F /* SceneDelegate.swift */; };
 		EC216444235A4F930005335F /* BestSellersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216443235A4F930005335F /* BestSellersVC.swift */; };
@@ -26,12 +26,9 @@
 		EC216464235A51D70005335F /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216463235A51D70005335F /* PersistenceHelper.swift */; };
 		EC216466235A52000005335F /* FavoritePersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216465235A52000005335F /* FavoritePersistenceHelper.swift */; };
 		EC216468235A52E80005335F /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216467235A52E80005335F /* AppError.swift */; };
-
-		EC21646A235A53F70005335F /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216469235A53F70005335F /* Secrets.swift */; };
 		EC8A8465235CDAA300851CC8 /* iOS_NYTimesBestseller_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8A8464235CDAA300851CC8 /* iOS_NYTimesBestseller_AppTests.swift */; };
 		EC8A846C235CE3A500851CC8 /* BestSeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216452235A50770005335F /* BestSeller.swift */; };
 		EC8A846D235CE3CB00851CC8 /* BestSellerAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC21645C235A50FB0005335F /* BestSellerAPIClient.swift */; };
-		EC8A846E235CE4FC00851CC8 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216469235A53F70005335F /* Secrets.swift */; };
 		EC8A846F235CE50300851CC8 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216467235A52E80005335F /* AppError.swift */; };
 		EC8A8470235CE50C00851CC8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216457235A50C60005335F /* NetworkManager.swift */; };
 		EC8A8472235CF40100851CC8 /* bestsellers.json in Resources */ = {isa = PBXBuildFile; fileRef = EC8A8471235CF40100851CC8 /* bestsellers.json */; };
@@ -39,7 +36,6 @@
 		EC8A8476235CFE3900851CC8 /* CategoriesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8A8475235CFE3900851CC8 /* CategoriesAPIClient.swift */; };
 		EC8A8478235CFF5600851CC8 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = EC8A8477235CFF5600851CC8 /* categories.json */; };
 		ECFA4E7B235CD12500E782D3 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA4E7A235CD12500E782D3 /* Categories.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3CBA899B235A5AFE00773215 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		3C855D48235DF643007F85C7 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		EC21641D235A4EAC0005335F /* iOS_NYTimesBestseller_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_NYTimesBestseller_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC216420235A4EAC0005335F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC216422235A4EAC0005335F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,8 +72,6 @@
 		EC216463235A51D70005335F /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		EC216465235A52000005335F /* FavoritePersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePersistenceHelper.swift; sourceTree = "<group>"; };
 		EC216467235A52E80005335F /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
-
-		EC216469235A53F70005335F /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		EC8A8462235CDAA300851CC8 /* iOS_NYTimesBestseller_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOS_NYTimesBestseller_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8A8464235CDAA300851CC8 /* iOS_NYTimesBestseller_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_NYTimesBestseller_AppTests.swift; sourceTree = "<group>"; };
 		EC8A8466235CDAA300851CC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,7 +80,6 @@
 		EC8A8475235CFE3900851CC8 /* CategoriesAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAPIClient.swift; sourceTree = "<group>"; };
 		EC8A8477235CFF5600851CC8 /* categories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
 		ECFA4E7A235CD12500E782D3 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,11 +159,9 @@
 			isa = PBXGroup;
 			children = (
 				EC216452235A50770005335F /* BestSeller.swift */,
-
 				ECFA4E7A235CD12500E782D3 /* Categories.swift */,
-				EC216469235A53F70005335F /* Secrets.swift */,
 				EC216454235A50880005335F /* BookDetail.swift */,
-				3CBA899B235A5AFE00773215 /* Secrets.swift */,
+				3C855D48235DF643007F85C7 /* Secrets.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -311,7 +302,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CBA899C235A5AFE00773215 /* Secrets.swift in Sources */,
 				EC216450235A50400005335F /* BestSellersCell.swift in Sources */,
 				EC216466235A52000005335F /* FavoritePersistenceHelper.swift in Sources */,
 				EC216468235A52E80005335F /* AppError.swift in Sources */,
@@ -328,6 +318,7 @@
 				EC216446235A4FC00005335F /* SettingsVC.swift in Sources */,
 				EC216423235A4EAC0005335F /* SceneDelegate.swift in Sources */,
 				EC216444235A4F930005335F /* BestSellersVC.swift in Sources */,
+				3C855D49235DF643007F85C7 /* Secrets.swift in Sources */,
 				EC216455235A50880005335F /* BookDetail.swift in Sources */,
 				ECFA4E7B235CD12500E782D3 /* Categories.swift in Sources */,
 				EC21645B235A50DD0005335F /* ImageHelper.swift in Sources */,
@@ -341,7 +332,6 @@
 			files = (
 				EC8A8470235CE50C00851CC8 /* NetworkManager.swift in Sources */,
 				EC8A846D235CE3CB00851CC8 /* BestSellerAPIClient.swift in Sources */,
-				EC8A846E235CE4FC00851CC8 /* Secrets.swift in Sources */,
 				EC8A846F235CE50300851CC8 /* AppError.swift in Sources */,
 				EC8A846C235CE3A500851CC8 /* BestSeller.swift in Sources */,
 				EC8A8465235CDAA300851CC8 /* iOS_NYTimesBestseller_AppTests.swift in Sources */,
