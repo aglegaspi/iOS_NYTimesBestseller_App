@@ -7,3 +7,66 @@
 //
 
 import Foundation
+
+// MARK: - BookDetailWrapper
+struct BookDetailWrapper: Codable {
+    let items: [BookDetail]?
+}
+
+// MARK: - BookDetail
+struct BookDetail: Codable {
+    let selfLink: String?
+    let volumeInfo: VolumeInfo?
+    let saleInfo: SaleInfo?
+    let searchInfo: SearchInfo?
+    
+    static func getBookDetail(from data: Data) throws -> [BookDetail]? {
+        // TODO:
+        do {
+            let response = try JSONDecoder().decode(BookDetailWrapper.self,from: data)
+            return response.items
+        } catch {
+            return nil
+        }
+        
+    }
+}
+
+// MARK: - SaleInfo
+struct SaleInfo: Codable {
+    let country, saleability: String?
+    let isEbook: Bool?
+}
+
+// MARK: - SearchInfo
+struct SearchInfo: Codable {
+    let textSnippet: String?
+}
+
+// MARK: - VolumeInfo
+struct VolumeInfo: Codable {
+    let title, subtitle: String?
+    let authors: [String]?
+    let publisher, publishedDate, volumeInfoDescription: String?
+    let pageCount: Int?
+    let printType: String?
+    let categories: [String]?
+    let averageRating: Double?
+    let ratingsCount: Int?
+    let maturityRating: String?
+    let imageLinks: ImageLinks?
+    let language: String?
+    let previewLink, infoLink: String?
+    let canonicalVolumeLink: String?
+
+    enum CodingKeys: String, CodingKey {
+        case title, subtitle, authors, publisher, publishedDate
+        case volumeInfoDescription = "description"
+        case pageCount, printType, categories, averageRating, ratingsCount, maturityRating, imageLinks, language, previewLink, infoLink, canonicalVolumeLink
+    }
+}
+
+// MARK: - ImageLinks
+struct ImageLinks: Codable {
+    let thumbnail: String?
+}
