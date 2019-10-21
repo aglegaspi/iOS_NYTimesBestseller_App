@@ -1,21 +1,20 @@
 //
-//  CategoriesAPIClient.swift
+//  ImageAPIClient.swift
 //  iOS_NYTimesBestseller_App
 //
-//  Created by Alexander George Legaspi on 10/20/19.
+//  Created by Alexander George Legaspi on 10/21/19.
 //  Copyright © 2019 Unit 4 Group Project. All rights reserved.
 //
 
 import Foundation
 
-struct CategoriesAPIClient {
-    let key = Secrets.bestseller_api_key
+struct ImageAPIClient {
     
-    static let manager = CategoriesAPIClient()
+    static let manager = ImageAPIClient()
     
-    func getCategories(completionHandler: @escaping (Result<[Categories]?, AppError>) -> Void) {
+    func getImage(isbn: String, completionHandler: @escaping (Result<[Image]?, AppError>) -> Void) {
         
-        let urlString = "https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=\(key)"
+        let urlString = "https://www.googleapis.com/books/v1/volumes?q=+isbn:\(isbn)"
         
         print(urlString)
         guard let url = URL(string: urlString) else {
@@ -34,8 +33,9 @@ struct CategoriesAPIClient {
                 case let .success(data):
                     // TODO:
                     do {
-                        let response = try Categories.getCategories(from: data)
+                        let response = try Image.getImage(from: data)
                         completionHandler(.success(response))
+                        print(response!)
                     }
                     catch {
                         completionHandler(.failure(.couldNotParseJSON(rawError: error)))
