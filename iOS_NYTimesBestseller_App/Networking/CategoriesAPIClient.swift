@@ -13,7 +13,7 @@ struct CategoriesAPIClient {
     
     static let manager = CategoriesAPIClient()
     
-    func getCategories(isbn: String, completionHandler: @escaping (Result<[Categories]?, AppError>) -> Void) {
+    func getCategories(completionHandler: @escaping (Result<[Categories]?, AppError>) -> Void) {
         
         let urlString = "https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=\(key)"
         
@@ -36,7 +36,6 @@ struct CategoriesAPIClient {
                     do {
                         let response = try Categories.getCategories(from: data)
                         completionHandler(.success(response))
-                        print(response!)
                     }
                     catch {
                         completionHandler(.failure(.couldNotParseJSON(rawError: error)))

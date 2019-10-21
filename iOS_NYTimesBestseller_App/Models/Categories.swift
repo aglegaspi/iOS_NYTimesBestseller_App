@@ -13,20 +13,21 @@ struct CategoriesWrapper: Codable {
 }
 
 struct Categories: Codable {
-    let listName: String
+    let listName, displayName, listNameEncoded: String?
 
     enum CodingKeys: String, CodingKey {
         case listName = "list_name"
+        case displayName = "display_name"
+        case listNameEncoded = "list_name_encoded"
     }
     
     static func getCategories(from data: Data) throws -> [Categories]? {
-        // TODO:
         do {
             let response = try JSONDecoder().decode(CategoriesWrapper.self,from: data)
             return response.results
         } catch {
             return nil
         }
-        
     }
 }
+

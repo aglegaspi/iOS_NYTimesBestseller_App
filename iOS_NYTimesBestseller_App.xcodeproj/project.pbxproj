@@ -35,6 +35,10 @@
 		EC8A8474235CFCA300851CC8 /* bookdetail.json in Resources */ = {isa = PBXBuildFile; fileRef = EC8A8473235CFCA300851CC8 /* bookdetail.json */; };
 		EC8A8476235CFE3900851CC8 /* CategoriesAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8A8475235CFE3900851CC8 /* CategoriesAPIClient.swift */; };
 		EC8A8478235CFF5600851CC8 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = EC8A8477235CFF5600851CC8 /* categories.json */; };
+		ECF93375235E3908002B5CBD /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF93374235E3908002B5CBD /* Image.swift */; };
+		ECF93377235E398E002B5CBD /* ImageAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF93376235E398E002B5CBD /* ImageAPIClient.swift */; };
+		ECF93378235E3C57002B5CBD /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF93374235E3908002B5CBD /* Image.swift */; };
+		ECF93379235E3C5B002B5CBD /* ImageAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF93376235E398E002B5CBD /* ImageAPIClient.swift */; };
 		ECFA4E7B235CD12500E782D3 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFA4E7A235CD12500E782D3 /* Categories.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +83,8 @@
 		EC8A8473235CFCA300851CC8 /* bookdetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bookdetail.json; sourceTree = "<group>"; };
 		EC8A8475235CFE3900851CC8 /* CategoriesAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesAPIClient.swift; sourceTree = "<group>"; };
 		EC8A8477235CFF5600851CC8 /* categories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
+		ECF93374235E3908002B5CBD /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		ECF93376235E398E002B5CBD /* ImageAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIClient.swift; sourceTree = "<group>"; };
 		ECFA4E7A235CD12500E782D3 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +167,7 @@
 				EC216452235A50770005335F /* BestSeller.swift */,
 				ECFA4E7A235CD12500E782D3 /* Categories.swift */,
 				EC216454235A50880005335F /* BookDetail.swift */,
+				ECF93374235E3908002B5CBD /* Image.swift */,
 				3C855D48235DF643007F85C7 /* Secrets.swift */,
 			);
 			path = Models;
@@ -177,6 +184,7 @@
 				EC21645E235A51180005335F /* BookDetailAPIClient.swift */,
 				EC8A8475235CFE3900851CC8 /* CategoriesAPIClient.swift */,
 				EC8A8477235CFF5600851CC8 /* categories.json */,
+				ECF93376235E398E002B5CBD /* ImageAPIClient.swift */,
 				EC216467235A52E80005335F /* AppError.swift */,
 			);
 			path = Networking;
@@ -310,7 +318,9 @@
 				EC21644E235A50220005335F /* FavoritesCell.swift in Sources */,
 				EC216453235A50780005335F /* BestSeller.swift in Sources */,
 				EC216458235A50C60005335F /* NetworkManager.swift in Sources */,
+				ECF93375235E3908002B5CBD /* Image.swift in Sources */,
 				EC21645D235A50FB0005335F /* BestSellerAPIClient.swift in Sources */,
+				ECF93377235E398E002B5CBD /* ImageAPIClient.swift in Sources */,
 				EC216464235A51D70005335F /* PersistenceHelper.swift in Sources */,
 				EC216421235A4EAC0005335F /* AppDelegate.swift in Sources */,
 				EC8A8476235CFE3900851CC8 /* CategoriesAPIClient.swift in Sources */,
@@ -330,8 +340,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECF93378235E3C57002B5CBD /* Image.swift in Sources */,
 				EC8A8470235CE50C00851CC8 /* NetworkManager.swift in Sources */,
 				EC8A846D235CE3CB00851CC8 /* BestSellerAPIClient.swift in Sources */,
+				ECF93379235E3C5B002B5CBD /* ImageAPIClient.swift in Sources */,
+				EC8A846E235CE4FC00851CC8 /* Secrets.swift in Sources */,
 				EC8A846F235CE50300851CC8 /* AppError.swift in Sources */,
 				EC8A846C235CE3A500851CC8 /* BestSeller.swift in Sources */,
 				EC8A8465235CDAA300851CC8 /* iOS_NYTimesBestseller_AppTests.swift in Sources */,
