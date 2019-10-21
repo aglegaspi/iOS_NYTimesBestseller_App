@@ -27,7 +27,7 @@ class SettingsVC: UIViewController {
     var categoryPicker: UIPickerView = {
         var picker = UIPickerView()
 
-        picker.backgroundColor = .yellow
+        picker.backgroundColor = .white
         return picker
     }()
     
@@ -37,10 +37,10 @@ class SettingsVC: UIViewController {
         loadListOfCategories()
         view.backgroundColor = .white
         loadViews()
-        
         loadContraints()
         
     }
+    
     
     //MARK: LOADERS
     private func loadViews() {
@@ -104,6 +104,10 @@ extension SettingsVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return categories[row].displayName
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // save this selection to USER DEFAULTS
     }
     
     
