@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CBA899C235A5AFE00773215 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBA899B235A5AFE00773215 /* Secrets.swift */; };
 		EC216421235A4EAC0005335F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216420235A4EAC0005335F /* AppDelegate.swift */; };
 		EC216423235A4EAC0005335F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216422235A4EAC0005335F /* SceneDelegate.swift */; };
 		EC21642A235A4EAF0005335F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC216429235A4EAF0005335F /* Assets.xcassets */; };
@@ -28,7 +29,6 @@
 		EC216464235A51D70005335F /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216463235A51D70005335F /* PersistenceHelper.swift */; };
 		EC216466235A52000005335F /* FavoritePersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216465235A52000005335F /* FavoritePersistenceHelper.swift */; };
 		EC216468235A52E80005335F /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216467235A52E80005335F /* AppError.swift */; };
-		EC21646A235A53F70005335F /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216469235A53F70005335F /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3CBA899B235A5AFE00773215 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		EC21641D235A4EAC0005335F /* iOS_NYTimesBestseller_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_NYTimesBestseller_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC216420235A4EAC0005335F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC216422235A4EAC0005335F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		EC216463235A51D70005335F /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		EC216465235A52000005335F /* FavoritePersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePersistenceHelper.swift; sourceTree = "<group>"; };
 		EC216467235A52E80005335F /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
-		EC216469235A53F70005335F /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,8 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				EC216452235A50770005335F /* BestSeller.swift */,
-				EC216469235A53F70005335F /* Secrets.swift */,
 				EC216454235A50880005335F /* BookDetail.swift */,
+				3CBA899B235A5AFE00773215 /* Secrets.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC21646A235A53F70005335F /* Secrets.swift in Sources */,
+				3CBA899C235A5AFE00773215 /* Secrets.swift in Sources */,
 				EC216450235A50400005335F /* BestSellersCell.swift in Sources */,
 				EC216466235A52000005335F /* FavoritePersistenceHelper.swift in Sources */,
 				EC216468235A52E80005335F /* AppError.swift in Sources */,
