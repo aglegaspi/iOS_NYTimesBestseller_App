@@ -45,6 +45,7 @@ class DetailVC: UIViewController {
       let textView = UITextView()
       textView.text = placeholderText
       textView.textAlignment = .left
+      textView.font = UIFont(name: "Arial", size: 15)
       return textView
   }()
   
