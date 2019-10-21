@@ -29,35 +29,5 @@ class iOS_NYTimesBestseller_AppTests: XCTestCase {
 
     }
     
-    func testDataFromImageAPI() {
-        
-        
-         func getDataFromImageAPI() -> Bool {
-            let isbn = "0385514239"
-            var image = [Image]()
-            var output = false
-            
-            ImageAPIClient.manager.getImage(isbn: isbn) { (result) in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let success):
-                        image = success!
-                        dump(success)
-                        output = true
-                        
-                    case .failure(let error):
-                        print("My error \(error)")
-                    }
-                }
-                
-            }
-            return output
-        }
-        
-        
-        XCTAssert(getDataFromImageAPI() == true, "Did not get data from API")
-    }
-    
-    
     
 }
