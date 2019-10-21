@@ -13,9 +13,9 @@ struct BestSellerAPIClient {
     
     static let manager = BestSellerAPIClient()
     
-    func getBestSeller(genre: String, completionHandler: @escaping (Result<[BestSeller]?, AppError>) -> Void) {
+    func getBestSeller(category: String, completionHandler: @escaping (Result<[BestSeller]?, AppError>) -> Void) {
         
-        let urlString = "https://api.nytimes.com/svc/books/v3/lists.json?api-key=\(api_key)&list=\(genre)"
+        let urlString = "https://api.nytimes.com/svc/books/v3/lists.json?api-key=\(api_key)&list=\(category)"
         
         print(urlString)
         guard let url = URL(string: urlString) else {
