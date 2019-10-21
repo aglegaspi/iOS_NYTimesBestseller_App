@@ -10,9 +10,12 @@ import UIKit
 
 class SettingsVC: UIViewController {
 
-    //var categories: Categories!
-    let pickerData = ["11", "12", "13"]
-    
+    var categories: [Categories] = [] {
+        didSet {
+            categoryPicker.reloadAllComponents()
+        }
+    }
+ 
     //MARK: VIEWS
     var settingsLabel: UILabel = {
         var label = UILabel()
@@ -23,17 +26,20 @@ class SettingsVC: UIViewController {
     
     var categoryPicker: UIPickerView = {
         var picker = UIPickerView()
-    
-        
+
+        picker.backgroundColor = .yellow
         return picker
     }()
     
     //MARK: LIFECYCLES
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadListOfCategories()
         view.backgroundColor = .white
         loadViews()
+        
         loadContraints()
+        
     }
     
     //MARK: LOADERS
@@ -42,6 +48,20 @@ class SettingsVC: UIViewController {
         view.addSubview(categoryPicker)
         categoryPicker.delegate = self
         categoryPicker.dataSource = self
+    }
+    
+    private func loadListOfCategories() {
+        CategoriesAPIClient.manager.getCategories { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let success):
+                    guard let success = success else { return }
+                    self.categories = success
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
     
     //MARK: PRIVATE FUNCTIONS
@@ -79,11 +99,11 @@ extension SettingsVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        return categories.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        return categories[row].displayName
     }
     
     
