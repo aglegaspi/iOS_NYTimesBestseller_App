@@ -10,6 +10,23 @@ import UIKit
 
 class FavoritesCell: UICollectionViewCell {
     
+    weak var delegate: CellDelegate?
+    
+    lazy var settingsButton: UIButton = {
+        var settingsButton = UIButton()
+//        settingsButton.backgroundColor = .systemPink
+        settingsButton.setTitle("...", for: .normal)
+        settingsButton.titleLabel?.font = .systemFont(ofSize: 50)
+        settingsButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        return settingsButton
+    }()
+    
+    @objc func buttonAction(_ sender: UIButton) {
+        print("working")
+
+        delegate?.showActionSheet(tag: sender.tag)
+    }
+    
     lazy var weeksOnLabel: UILabel = {
         var label = UILabel()
         label.textAlignment = .center
@@ -41,6 +58,7 @@ class FavoritesCell: UICollectionViewCell {
         contentView.addSubview(weeksOnLabel)
         contentView.addSubview(favoritesImage)
         contentView.addSubview(summaryLabel)
+        contentView.addSubview(settingsButton)
     }
 
     private func setupCellContraints() {
@@ -48,8 +66,20 @@ class FavoritesCell: UICollectionViewCell {
         setupFavoritesImage()
         setupWeeksOn()
         setupSummaryLabel()
+        setupButton()
     }
     
+    private func setupButton() {
+        settingsButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            settingsButton.topAnchor.constraint(equalTo: favoritesImage.topAnchor, constant: 0),
+            settingsButton.leadingAnchor.constraint(equalTo: favoritesImage.trailingAnchor, constant: 20),
+            settingsButton.heightAnchor.constraint(equalToConstant: 30),
+            settingsButton.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            
+            
+        ])
+    }
     
     
     private func setupFavoritesImage() {
