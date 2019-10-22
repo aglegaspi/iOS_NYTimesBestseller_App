@@ -60,6 +60,7 @@ class BestSellersVC: UIViewController {
         self.view.backgroundColor = .white
         setupDelegatesAndDataSource()
         setUpConstraints()
+        
     }
     
     private func setUpSubviews() {
@@ -82,6 +83,7 @@ class BestSellersVC: UIViewController {
                 case .success(let success):
                     guard let success = success else { return }
                     self.categories = success
+                    
                 case .failure(let error):
                     print(error)
                 }
@@ -104,7 +106,7 @@ class BestSellersVC: UIViewController {
     
     private func loadImages(category: String) {
         
-        ImageAPIClient.manager.getImage(category: category) { (result) in
+        ImageAPIClient.manager.getImages(category: category) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let success):
@@ -171,7 +173,9 @@ extension BestSellersVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bestSellersCell", for: indexPath) as! BestSellersCell
+        
         let book = bestsellers[indexPath.row]
         guard let imageURL = images[indexPath.row].bookImage else { fatalError() }
         
@@ -189,9 +193,7 @@ extension BestSellersVC: UICollectionViewDelegate, UICollectionViewDataSource, U
             }
         }
         
-        
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -212,9 +214,10 @@ extension BestSellersVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedCategory = categories[row].listNameEncoded!
-        loadBestSellers(selected_category: selectedCategory)
+        guard let selectedCategory = categories[row].listNameEncoded else { return }
         loadImages(category: selectedCategory)
+        loadBestSellers(selected_category: selectedCategory)
+        
     }
     
 }

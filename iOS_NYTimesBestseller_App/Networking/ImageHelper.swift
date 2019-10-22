@@ -24,6 +24,7 @@ class ImageHelper {
         }
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in
+            
             guard error == nil else {
                 completionHandler(.failure(.noDataReceived))
                 return

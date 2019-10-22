@@ -8,19 +8,14 @@
 
 import Foundation
 
-
-// MARK: - ImageWrapper
 struct ImageWrapper: Codable {
     let results: Results?
 }
 
-// MARK: - Results
 struct Results: Codable {
     let books: [Image]?
-
 }
 
-// MARK: - Book
 struct Image: Codable {
     let bookImage: String?
 

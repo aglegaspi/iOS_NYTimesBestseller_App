@@ -13,7 +13,7 @@ struct ImageAPIClient {
     
     static let manager = ImageAPIClient()
     
-    func getImage(category: String, completionHandler: @escaping (Result<[Image]?, AppError>) -> Void) {
+    func getImages(category: String, completionHandler: @escaping (Result<[Image]?, AppError>) -> Void) {
         
         let urlString = "https://api.nytimes.com/svc/books/v3/lists/current/\(category).json?api-key=\(api_key)"
         
@@ -32,11 +32,9 @@ struct ImageAPIClient {
                     return
                     
                 case let .success(data):
-                    // TODO:
                     do {
                         let response = try Image.getImages(from: data)
                         completionHandler(.success(response))
-                        print(response!)
                     }
                     catch {
                         completionHandler(.failure(.couldNotParseJSON(rawError: error)))

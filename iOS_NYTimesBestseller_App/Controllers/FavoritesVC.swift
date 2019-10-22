@@ -105,7 +105,7 @@ extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath) as! FavoritesCell
-        let selectedFavorite = data[indexPath.row]
+        //let selectedFavorite = data[indexPath.row]
         
         cell.delegate = self
         cell.weeksOnLabel.text = data[indexPath.item]
