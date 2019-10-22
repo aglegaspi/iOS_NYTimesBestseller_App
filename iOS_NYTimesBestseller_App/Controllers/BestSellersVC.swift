@@ -11,6 +11,8 @@ import UIKit
 class BestSellersVC: UIViewController {
     
     //MARK: VARIABLES
+    var default_category = "combined-print-and-e-book-fiction"
+    
     var bestsellers: [BestSeller] = [] {
         didSet {
             bestSellersCollectionView.reloadData()
@@ -29,14 +31,13 @@ class BestSellersVC: UIViewController {
         }
     }
     
-    
     //MARK: VIEWS
     lazy var bestSellersHeaderLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .white
         label.text = "Best Sellers"
         label.textAlignment = .center
-      label.font = UIFont(name: "AvenirNext-Regular", size: 30)
+        label.font = UIFont(name: "AvenirNext-Regular", size: 30)
         return label
     }()
     
@@ -59,16 +60,15 @@ class BestSellersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadListOfCategories()
-        checkForUserDefault()
-        
+        loadUserDefaults()
         setUpSubviews()
         self.view.backgroundColor = .white
         setupDelegatesAndDataSource()
         setUpConstraints()
         
-        
     }
     
+    //MARK: SETUP FUNCTIONS
     private func setUpSubviews() {
         self.view.addSubview(bestSellersHeaderLabel)
         self.view.addSubview(bestSellersCollectionView)
@@ -82,14 +82,38 @@ class BestSellersVC: UIViewController {
         bestSellersPicker.dataSource = self
     }
     
+    //MARK: PRIVATE FUNCTIONS
+    
+    private func loadUserDefaults() {
+        print(UserDefaultsWrapper.manager.getCategory())
+        
+        if let selected_catgory = UserDefaultsWrapper.manager.getCategory() {
+            default_category = selected_catgory
+        }
+        print(default_category)
+        loadBestSellers(selected_category: default_category)
+        loadImages(category: default_category)
+        
+        guard let selectedCategoryInt = UserDefaultsWrapper.manager.getCategoryInt() else {return}
+        bestSellersPicker.selectRow(selectedCategoryInt, inComponent: 0, animated: true)
+        bestSellersPicker.reloadAllComponents()
+        
+        //    } else {
+        //    loadListOfCategories()
+        //    loadBestSellers(selected_category: default_category)
+        //    loadImages(category: default_category)
+    }
+    
+    
     private func loadListOfCategories() {
+        
         CategoriesAPIClient.manager.getCategories { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let success):
                     guard let success = success else { return }
                     self.categories = success
-                    
+                    self.loadUserDefaults()
                 case .failure(let error):
                     print(error)
                 }
@@ -103,6 +127,19 @@ class BestSellersVC: UIViewController {
                 switch result {
                 case .success(let success):
                     self.bestsellers = success!
+                    
+                    ImageAPIClient.manager.getImages(category: self.categories[self.bestSellersPicker.selectedRow(inComponent: 0)].listNameEncoded ?? "combined-print-and-e-book-fiction") { (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(let images):
+                                self.images = images ?? []
+                            case .failure(let error):
+                                print(error)
+                                
+                            }
+                        }
+                        
+                    }
                 case .failure(let error):
                     print(error)
                 }
@@ -165,21 +202,6 @@ class BestSellersVC: UIViewController {
         ])
     }
     
-    private func checkForUserDefault() {
-        if UserDefaultsWrapper.manager.getCategory() != nil {
-            
-            guard let category = UserDefaultsWrapper.manager.getCategory() else {return}
-            loadImages(category: category)
-            loadBestSellers(selected_category: category)
-            
-            print(category)
-            
-            guard let selectedCategoryInt = UserDefaultsWrapper.manager.getCategoryInt() else {return}
-            bestSellersPicker.selectRow(selectedCategoryInt, inComponent: 0, animated: true)
-            bestSellersPicker.reloadAllComponents()
-        }
-    }
-    
 }
 
 
@@ -198,48 +220,44 @@ extension BestSellersVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bestSellersCell", for: indexPath) as! BestSellersCell
         
         let book = bestsellers[indexPath.row]
-//        guard let imageURL = images[indexPath.row].bookImage else { fatalError() }
+        // let image = images[indexPath.row]
+        
+        
+        guard let imageURL = self.images[indexPath.row].bookImage else { fatalError() }
         
         cell.weeksOnLabel.text = "\(book.weeksOnList ?? 0) weeks as best seller"
         cell.descriptionLabel.text = book.bookInfo?[0].bookDetailDescription
         
-//        ImageHelper.shared.getImage(urlStr: imageURL) { (result) in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success (let image):
-//                    cell.bestSellerImage.image = image
-//                case .failure(let error):
-//                    print(error)
-//                }
-//            }
-//        }
-//
+        ImageHelper.shared.getImage(urlStr: imageURL) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success (let image):
+                    cell.bestSellerImage.image = image
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        
+        
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 300)
     }
-  
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    print("cell pressed")
-    let dvc = DetailVC()
-    dvc.modalPresentationStyle = .currentContext
-    let selectedBook = bestsellers[indexPath.row]
-    dvc.bestSeller = selectedBook
-    self.present(dvc, animated: true, completion: nil)
-
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("cell pressed")
+        let dvc = DetailVC()
+        dvc.modalPresentationStyle = .currentContext
+        let selectedBook = bestsellers[indexPath.row]
+        dvc.bestSeller = selectedBook
+        self.present(dvc, animated: true, completion: nil)
+        
+    }
     
-//    let bookSelected = bestsellers[indexPath.row]
-//    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-//
-//    let DetailVC = storyboard.instantiateViewController(withIdentifier:"DetailViewController") as! DetailVC
-//    DetailVC.bestSeller = bookSelected
-//
-//    self.navigationController?.pushViewController(DetailVC,animated: true)
-  }
-  
 }
 
 
@@ -257,7 +275,7 @@ extension BestSellersVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let selectedCategory = categories[row].listNameEncoded else { return }
         loadBestSellers(selected_category: selectedCategory)
-        
+        self.bestSellersCollectionView.reloadData()
     }
     
 }
