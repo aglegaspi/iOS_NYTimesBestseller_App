@@ -59,10 +59,13 @@ class BestSellersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadListOfCategories()
+        checkForUserDefault()
+        
         setUpSubviews()
         self.view.backgroundColor = .white
         setupDelegatesAndDataSource()
         setUpConstraints()
+        
         
     }
     
@@ -162,6 +165,21 @@ class BestSellersVC: UIViewController {
         ])
     }
     
+    private func checkForUserDefault() {
+        if UserDefaultsWrapper.manager.getCategory() != nil {
+            
+            guard let category = UserDefaultsWrapper.manager.getCategory() else {return}
+            loadImages(category: category)
+            loadBestSellers(selected_category: category)
+            
+            print(category)
+            
+            guard let selectedCategoryInt = UserDefaultsWrapper.manager.getCategoryInt() else {return}
+            bestSellersPicker.selectRow(selectedCategoryInt, inComponent: 0, animated: true)
+            bestSellersPicker.reloadAllComponents()
+        }
+    }
+    
 }
 
 
@@ -180,22 +198,22 @@ extension BestSellersVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bestSellersCell", for: indexPath) as! BestSellersCell
         
         let book = bestsellers[indexPath.row]
-        guard let imageURL = images[indexPath.row].bookImage else { fatalError() }
+//        guard let imageURL = images[indexPath.row].bookImage else { fatalError() }
         
         cell.weeksOnLabel.text = "\(book.weeksOnList ?? 0) weeks as best seller"
         cell.descriptionLabel.text = book.bookInfo?[0].bookDetailDescription
         
-        ImageHelper.shared.getImage(urlStr: imageURL) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success (let image):
-                    cell.bestSellerImage.image = image
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
-        
+//        ImageHelper.shared.getImage(urlStr: imageURL) { (result) in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success (let image):
+//                    cell.bestSellerImage.image = image
+//                case .failure(let error):
+//                    print(error)
+//                }
+//            }
+//        }
+//
         return cell
     }
     
@@ -238,7 +256,6 @@ extension BestSellersVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard let selectedCategory = categories[row].listNameEncoded else { return }
-        loadImages(category: selectedCategory)
         loadBestSellers(selected_category: selectedCategory)
         
     }

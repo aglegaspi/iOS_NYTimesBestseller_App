@@ -12,15 +12,31 @@ class UserDefaultsWrapper {
     
     static let manager = UserDefaultsWrapper()
     
+    //MARK: GET
+    
     func getCategory() -> String? {
         return UserDefaults.standard.value(forKey: userCategoryKey) as? String
     }
     
-    func store(searchString: String) {
-        UserDefaults.standard.set(searchString, forKey: userCategoryKey)
+    func getCategoryInt() -> Int? {
+        return UserDefaults.standard.value(forKey: userCategoryIntKey) as? Int
     }
     
+    //MARK: SAVE
+    
+    func store(categoryString: String) {
+        UserDefaults.standard.set(categoryString, forKey: userCategoryKey)
+    }
+    
+    func store(categoryInt: Int) {
+        UserDefaults.standard.set(categoryInt, forKey: userCategoryIntKey)
+    }
+    
+    //MARK: KEYS
+    
     private let userCategoryKey = "userCategory"
+    private let userCategoryIntKey = "userCategoryInt"
     
     private init() {}
 }
+

@@ -109,8 +109,12 @@ extension SettingsVC: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // save this selection to USER DEFAULTS
         
-        UserDefaultsWrapper.manager.store(searchString: categories[row].listNameEncoded!)
+        UserDefaultsWrapper.manager.store(categoryString: categories[row].listNameEncoded!)
         print(UserDefaultsWrapper.manager.getCategory())
+        
+        UserDefaultsWrapper.manager.store(categoryInt: row)
+        print(UserDefaultsWrapper.manager.getCategoryInt())
+    
     }
     
     
