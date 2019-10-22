@@ -21,13 +21,13 @@ class SettingsVC: UIViewController {
         var label = UILabel()
         label.text = "Pick Default Category"
         label.textAlignment = .center
+        label.font = UIFont(name: "AvenirNext-Regular", size: 30)
+        label.textAlignment = .center
         return label
     }()
     
     var categoryPicker: UIPickerView = {
         var picker = UIPickerView()
-
-        picker.backgroundColor = .white
         return picker
     }()
     
@@ -40,6 +40,11 @@ class SettingsVC: UIViewController {
         loadContraints()
         
     }
+  
+  override func viewDidAppear(_ animated: Bool) {
+      super.viewDidAppear(animated)
+      setGradientBackground(colorBottom: .systemBlue, colorTop: .clear)
+  }
     
     
     //MARK: LOADERS
@@ -65,6 +70,18 @@ class SettingsVC: UIViewController {
     }
     
     //MARK: PRIVATE FUNCTIONS
+  
+  private func setGradientBackground(colorBottom: UIColor, colorTop: UIColor){
+      let gradientLayer = CAGradientLayer()
+      gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
+      gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+      gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+      gradientLayer.locations = [NSNumber(floatLiteral: 0.0), NSNumber(floatLiteral: 1.0)]
+      gradientLayer.frame = view.bounds
+
+    self.view.layer.insertSublayer(gradientLayer, at: 0)
+  }
+  
     private func loadContraints() {
         settingsLabelConstraints()
         categoryPickerConstraints()
@@ -76,7 +93,7 @@ class SettingsVC: UIViewController {
        settingsLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
         settingsLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
         settingsLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-        settingsLabel.heightAnchor.constraint(equalToConstant: 30)
+        settingsLabel.heightAnchor.constraint(equalToConstant: 40)
       ])
     }
     
