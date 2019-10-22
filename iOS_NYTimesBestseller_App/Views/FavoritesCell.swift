@@ -34,9 +34,11 @@ class FavoritesCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var summaryLabel: UILabel = {
-        var label = UILabel()
+    lazy var summaryLabel: UITextView = {
+        var label = UITextView()
         label.textAlignment = .center
+        label.font = UIFont(name: "Arial", size: 15)
+        label.isEditable = false
         return label
     }()
     
@@ -109,8 +111,8 @@ class FavoritesCell: UICollectionViewCell {
         summaryLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             summaryLabel.topAnchor.constraint(equalTo: weeksOnLabel.bottomAnchor, constant: 10),
-            summaryLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            summaryLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            summaryLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            summaryLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
             summaryLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
             
         ])
