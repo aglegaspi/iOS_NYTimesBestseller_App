@@ -250,7 +250,9 @@ extension BestSellersVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         let dvc = DetailVC()
         dvc.modalPresentationStyle = .currentContext
         let selectedBook = bestsellers[indexPath.row]
+        let selectedImage = images[indexPath.row]
         dvc.bestSeller = selectedBook
+        dvc.bestSellerImage = selectedImage
         self.present(dvc, animated: true, completion: nil)
         
     }
