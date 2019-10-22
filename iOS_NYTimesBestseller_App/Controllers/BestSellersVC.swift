@@ -60,7 +60,7 @@ class BestSellersVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadListOfCategories()
-        loadUserDefaults()
+    
         setUpSubviews()
         self.view.backgroundColor = .white
         setupDelegatesAndDataSource()
@@ -85,14 +85,13 @@ class BestSellersVC: UIViewController {
     //MARK: PRIVATE FUNCTIONS
     
     private func loadUserDefaults() {
-        print(UserDefaultsWrapper.manager.getCategory())
+        print(UserDefaultsWrapper.manager.getCategory()!)
         
         if let selected_catgory = UserDefaultsWrapper.manager.getCategory() {
             default_category = selected_catgory
         }
         print(default_category)
         loadBestSellers(selected_category: default_category)
-        loadImages(category: default_category)
         
         guard let selectedCategoryInt = UserDefaultsWrapper.manager.getCategoryInt() else {return}
         bestSellersPicker.selectRow(selectedCategoryInt, inComponent: 0, animated: true)
@@ -122,13 +121,15 @@ class BestSellersVC: UIViewController {
     }
     
     private func loadBestSellers(selected_category: String) {
+        let category = self.categories[self.bestSellersPicker.selectedRow(inComponent: 0)].listNameEncoded ?? "combined-print-and-e-book-fiction"
+        
         BestSellerAPIClient.manager.getBestSeller(category: selected_category) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let success):
                     self.bestsellers = success!
                     
-                    ImageAPIClient.manager.getImages(category: self.categories[self.bestSellersPicker.selectedRow(inComponent: 0)].listNameEncoded ?? "combined-print-and-e-book-fiction") { (result) in
+                    ImageAPIClient.manager.getImages(category: category) { (result) in
                         DispatchQueue.main.async {
                             switch result {
                             case .success(let images):
@@ -220,14 +221,11 @@ extension BestSellersVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bestSellersCell", for: indexPath) as! BestSellersCell
         
         let book = bestsellers[indexPath.row]
-        // let image = images[indexPath.row]
-        
-        
-        guard let imageURL = self.images[indexPath.row].bookImage else { fatalError() }
-        
+
         cell.weeksOnLabel.text = "\(book.weeksOnList ?? 0) weeks as best seller"
         cell.descriptionLabel.text = book.bookInfo?[0].bookDetailDescription
         
+        if images.count > 0, let imageURL = self.images[indexPath.row].bookImage {
         ImageHelper.shared.getImage(urlStr: imageURL) { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -238,8 +236,7 @@ extension BestSellersVC: UICollectionViewDelegate, UICollectionViewDataSource, U
                 }
             }
         }
-        
-        
+        }
         
         return cell
     }
