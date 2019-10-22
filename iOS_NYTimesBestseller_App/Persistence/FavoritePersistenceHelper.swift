@@ -11,23 +11,23 @@ import Foundation
 struct FavoritePersistenceHelper {
     static let manager = FavoritePersistenceHelper()
     
-    func save(newJournal: BestSeller) throws {
-        try persistenceHelper.save(newElement: newJournal)
+    func save(newFave: Favorites) throws {
+        try persistenceHelper.save(newElement: newFave)
     }
     
-    func getBestSellers() throws -> [BestSeller] {
+    func getBestSellers() throws -> [Favorites] {
         return try persistenceHelper.getObjects()
     }
     
     func deleteBestSellers(date: Date) throws {
         do {
-            let bestSeller =  try getBestSellers()
-            let newBestSellers = bestSeller.filter { $0.date != date}
-            try persistenceHelper.replace(elements: newBestSellers)
+//            let bestSeller =  try getBestSellers()
+//            let newBestSellers = bestSeller.filter { $0.date != date}
+//            try persistenceHelper.replace(elements: newBestSellers)
         }
     }
     
-    private let persistenceHelper = PersistenceHelper<BestSeller>(fileName: "BestSeller.plist")
+    private let persistenceHelper = PersistenceHelper<Favorites>(fileName: "Favorites.plist")
     
     private init() {}
 }

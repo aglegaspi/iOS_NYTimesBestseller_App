@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DFEF9AC235F471200A19D56 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFEF9AB235F471200A19D56 /* Secrets.swift */; };
+		1DFEF9B3235F5A8A00A19D56 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFEF9B2235F5A8A00A19D56 /* Favorites.swift */; };
 		3C855D49235DF643007F85C7 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855D48235DF643007F85C7 /* Secrets.swift */; };
 		EC216421235A4EAC0005335F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216420235A4EAC0005335F /* AppDelegate.swift */; };
 		EC216423235A4EAC0005335F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216422235A4EAC0005335F /* SceneDelegate.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		1DFEF9AB235F471200A19D56 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		1DFEF9B2235F5A8A00A19D56 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		3C855D48235DF643007F85C7 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		EC21641D235A4EAC0005335F /* iOS_NYTimesBestseller_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_NYTimesBestseller_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC216420235A4EAC0005335F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				EC216452235A50770005335F /* BestSeller.swift */,
+				1DFEF9B2235F5A8A00A19D56 /* Favorites.swift */,
 				ECFA4E7A235CD12500E782D3 /* Categories.swift */,
 				EC216454235A50880005335F /* BookDetail.swift */,
 				ECF93374235E3908002B5CBD /* Image.swift */,
@@ -321,6 +324,7 @@
 				EC216448235A4FD60005335F /* DetailVC.swift in Sources */,
 				EC21644E235A50220005335F /* FavoritesCell.swift in Sources */,
 				EC216453235A50780005335F /* BestSeller.swift in Sources */,
+				1DFEF9B3235F5A8A00A19D56 /* Favorites.swift in Sources */,
 				EC216458235A50C60005335F /* NetworkManager.swift in Sources */,
 				ECF93375235E3908002B5CBD /* Image.swift in Sources */,
 				EC21645D235A50FB0005335F /* BestSellerAPIClient.swift in Sources */,
