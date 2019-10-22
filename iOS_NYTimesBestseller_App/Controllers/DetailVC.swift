@@ -9,6 +9,9 @@
 import UIKit
 
 class DetailVC: UIViewController {
+  
+  
+  var bestSeller: BestSeller!
 
    //MARK: -- Properties
    
@@ -31,41 +34,58 @@ class DetailVC: UIViewController {
        let image = UIImage()
        let imageView = UIImageView(image: image)
        imageView.contentMode = .scaleAspectFit
+//    imageView.image = 
        return imageView
    }()
    
    lazy var authorLabel: UILabel = {
        let label = UILabel()
-       label.text = "let's get funky"
+       label.text = bestSeller.bookInfo?[0].author
        label.textAlignment = .center
        return label
    }()
    
    lazy var summary: UITextView = {
        let textView = UITextView()
-       textView.text = placeholderText
+    textView.text = bestSeller.bookInfo?[0].bookDetailDescription
        textView.textAlignment = .left
        textView.font = UIFont(name: "Arial", size: 15)
        return textView
    }()
    
-   let placeholderText = "The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿"
+//   let placeholderText = "The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿"
    
    //MARK: -- View Did Load
    
    override func viewDidLoad() {
        super.viewDidLoad()
-       setUpMiscellaneousThings()
-       setUpNavBarWithButtons()
-       addSubviews()
-       setConstraints()
+      view.backgroundColor = .white
+      setUpNavBarWithButtons()
+      addSubviews()
+      setConstraints()
+//      setUpMiscellaneousThings()
+
    }
    
    //MARK: -- Functions
+  
+//  func loadImage () {
+//    guard let imageURL = images.bookImage else { fatalError() }
+//    ImageHelper.shared.getImage(urlStr: imageURL) { (result) in
+//        DispatchQueue.main.async {
+//            switch result {
+//            case .success (let image):
+//                cell.bestSellerImage.image = image
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
+//  }
    
    private func setUpMiscellaneousThings() {
-       view.backgroundColor = .white
-       bookImage.image = #imageLiteral(resourceName: "placeholder")
+       
+//       bookImage.image = #imageLiteral(resourceName: "placeholder")
    }
    
    private func addSubviews() {
