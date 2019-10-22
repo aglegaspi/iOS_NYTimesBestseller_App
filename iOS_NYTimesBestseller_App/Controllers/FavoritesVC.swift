@@ -15,8 +15,11 @@ protocol CellDelegate: AnyObject {
 class FavoritesVC: UIViewController, CellDelegate {
     
     func showActionSheet(tag: Int) {
+//        let faves = self.faves[tag]
+        
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction.init(title: "Delete", style: .destructive) { (action) in
+            
         }
         
         let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
@@ -26,6 +29,12 @@ class FavoritesVC: UIViewController, CellDelegate {
         present(actionSheet, animated: true, completion: nil)
     }
     
+    //MARK: PROPERTIES
+    var faves = [Favorites]() {
+        didSet {
+            favoritesCollectionView.reloadData()
+        }
+    }
     
     var data = ["test", "testing", "tester"]
     
@@ -55,6 +64,18 @@ class FavoritesVC: UIViewController, CellDelegate {
         favoritesCollectionView.dataSource = self
         favoritesCollectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "favoriteCell")
         setUpConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+    }
+    
+    func loadData() {
+        do {
+            faves = try FavoritePersistenceHelper.manager.getBestSellers()
+        } catch {
+            print(error)
+        }
     }
     
     private func setUpSubviews() {
@@ -92,15 +113,29 @@ class FavoritesVC: UIViewController, CellDelegate {
 extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.data.count
+        return faves.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let currentFaves = faves[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath) as! FavoritesCell
         //let selectedFavorite = data[indexPath.row]
         
         cell.delegate = self
-        cell.weeksOnLabel.text = data[indexPath.item]
+        
+        cell.weeksOnLabel.text = "\(currentFaves.weeksOnList) weeks on best seller list"
+        
+        ImageHelper.shared.getImage(urlStr: currentFaves.image) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let imageFromOnline):
+                    cell.favoritesImage.image = imageFromOnline
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        
         return cell
     }
     

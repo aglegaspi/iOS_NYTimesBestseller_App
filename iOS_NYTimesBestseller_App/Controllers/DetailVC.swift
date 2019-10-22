@@ -128,7 +128,8 @@ class DetailVC: UIViewController {
             return
         }
         
-        let newBook = Favorites(weeksOnList: weeksOnListUnwrapped, bookInfo: bookInfoUnwrapped)
+        let newBook = Favorites(weeksOnList: weeksOnListUnwrapped, bookInfo: bookInfoUnwrapped, image: bestSellerImage.bookImage ?? "no book image")
+        
         let confirmationAlert = UIAlertController(title: "Favorite Added!", message: "Your book has been favorited! Check your Favorites tab!", preferredStyle: .alert)
         let okButton = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
         confirmationAlert.addAction(okButton)
