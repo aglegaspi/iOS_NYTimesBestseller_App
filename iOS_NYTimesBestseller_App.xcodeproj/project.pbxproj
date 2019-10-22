@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1DFEF9AC235F471200A19D56 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFEF9AB235F471200A19D56 /* Secrets.swift */; };
 		1DFEF9B3235F5A8A00A19D56 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFEF9B2235F5A8A00A19D56 /* Favorites.swift */; };
-		3C855D49235DF643007F85C7 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855D48235DF643007F85C7 /* Secrets.swift */; };
+		1DFEF9B5235F87BA00A19D56 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFEF9B4235F87BA00A19D56 /* Secrets.swift */; };
 		EC216421235A4EAC0005335F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216420235A4EAC0005335F /* AppDelegate.swift */; };
 		EC216423235A4EAC0005335F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216422235A4EAC0005335F /* SceneDelegate.swift */; };
 		EC216444235A4F930005335F /* BestSellersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216443235A4F930005335F /* BestSellersVC.swift */; };
@@ -55,9 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1DFEF9AB235F471200A19D56 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		1DFEF9B2235F5A8A00A19D56 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
-		3C855D48235DF643007F85C7 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		1DFEF9B4235F87BA00A19D56 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		EC21641D235A4EAC0005335F /* iOS_NYTimesBestseller_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_NYTimesBestseller_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC216420235A4EAC0005335F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC216422235A4EAC0005335F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,8 +171,7 @@
 				ECFA4E7A235CD12500E782D3 /* Categories.swift */,
 				EC216454235A50880005335F /* BookDetail.swift */,
 				ECF93374235E3908002B5CBD /* Image.swift */,
-				3C855D48235DF643007F85C7 /* Secrets.swift */,
-				1DFEF9AB235F471200A19D56 /* Secrets.swift */,
+				1DFEF9B4235F87BA00A19D56 /* Secrets.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -317,7 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC216450235A50400005335F /* BestSellersCell.swift in Sources */,
-				1DFEF9AC235F471200A19D56 /* Secrets.swift in Sources */,
+				1DFEF9B5235F87BA00A19D56 /* Secrets.swift in Sources */,
 				EC216466235A52000005335F /* FavoritePersistenceHelper.swift in Sources */,
 				EC216468235A52E80005335F /* AppError.swift in Sources */,
 				EC216461235A51300005335F /* UserDefaultsWrapper.swift in Sources */,
@@ -336,7 +333,6 @@
 				EC216446235A4FC00005335F /* SettingsVC.swift in Sources */,
 				EC216423235A4EAC0005335F /* SceneDelegate.swift in Sources */,
 				EC216444235A4F930005335F /* BestSellersVC.swift in Sources */,
-				3C855D49235DF643007F85C7 /* Secrets.swift in Sources */,
 				EC216455235A50880005335F /* BookDetail.swift in Sources */,
 				ECFA4E7B235CD12500E782D3 /* Categories.swift in Sources */,
 				EC21645B235A50DD0005335F /* ImageHelper.swift in Sources */,

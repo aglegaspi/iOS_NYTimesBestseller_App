@@ -85,7 +85,7 @@ class BestSellersVC: UIViewController {
     //MARK: PRIVATE FUNCTIONS
     
     private func loadUserDefaults() {
-        print(UserDefaultsWrapper.manager.getCategory()!)
+        print(UserDefaultsWrapper.manager.getCategory() ?? "nothing stored in UD")
         
         if let selected_catgory = UserDefaultsWrapper.manager.getCategory() {
             default_category = selected_catgory
