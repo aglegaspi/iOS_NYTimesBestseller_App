@@ -8,7 +8,26 @@
 
 import UIKit
 
-class FavoritesVC: UIViewController {
+protocol CellDelegate: AnyObject {
+   func showActionSheet(tag: Int)
+}
+
+class FavoritesVC: UIViewController, CellDelegate {
+    
+    func showActionSheet(tag: Int) {
+        
+                let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                let deleteAction = UIAlertAction.init(title: "Delete", style: .destructive) { (action) in
+        
+                }
+        
+                let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        
+                actionSheet.addAction(cancelAction)
+                actionSheet.addAction(deleteAction)
+                present(actionSheet, animated: true, completion: nil)
+    }
+    
     
     var data = ["test", "testing", "tester"]
     
@@ -16,6 +35,7 @@ class FavoritesVC: UIViewController {
     lazy var favoritesHeaderLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .systemPurple
+        label.text = "Favorites ()"
         return label
     }()
     
@@ -87,7 +107,7 @@ extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath) as! FavoritesCell
         let selectedFavorite = data[indexPath.row]
         
-        
+        cell.delegate = self
         cell.weeksOnLabel.text = data[indexPath.item]
         return cell
     }
