@@ -9,12 +9,13 @@
 import Foundation
 
 struct ImageAPIClient {
+    let api_key = Secrets.bestseller_api_key
     
     static let manager = ImageAPIClient()
     
-    func getImage(isbn: String, completionHandler: @escaping (Result<[Image]?, AppError>) -> Void) {
+    func getImage(category: String, completionHandler: @escaping (Result<[Image]?, AppError>) -> Void) {
         
-        let urlString = "https://www.googleapis.com/books/v1/volumes?q=+isbn:\(isbn)"
+        let urlString = "https://api.nytimes.com/svc/books/v3/lists/current/\(category).json?api-key=\(api_key)"
         
         print(urlString)
         guard let url = URL(string: urlString) else {
@@ -33,7 +34,7 @@ struct ImageAPIClient {
                 case let .success(data):
                     // TODO:
                     do {
-                        let response = try Image.getImage(from: data)
+                        let response = try Image.getImages(from: data)
                         completionHandler(.success(response))
                         print(response!)
                     }

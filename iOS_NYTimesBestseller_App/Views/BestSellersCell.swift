@@ -10,9 +10,9 @@ import UIKit
 
 class BestSellersCell: UICollectionViewCell {
     
-  lazy var bestSellerImage: UIView = {
-    let image = UIView()
-    image.backgroundColor = .blue
+  lazy var bestSellerImage: UIImageView = {
+    let image = UIImageView()
+    
     return image
   }()
   
