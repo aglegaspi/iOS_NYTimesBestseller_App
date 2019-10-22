@@ -36,13 +36,11 @@ class FavoritesVC: UIViewController, CellDelegate {
         }
     }
     
-    var data = ["test", "testing", "tester"]
-    
     //MARK: VIEWS
     lazy var favoritesHeaderLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .white
-        label.text = "Favorites ()"
+        label.text = "Favorites (\(faves.count))"
         label.textAlignment = .center
         label.font = UIFont(name: "AvenirNext-Regular", size: 30)
         return label
@@ -51,13 +49,13 @@ class FavoritesVC: UIViewController, CellDelegate {
     lazy var favoritesCollectionView: UICollectionView = {
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .white
-        //        collectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "favoriteCell")
         return collectionView
     }()
     
     //MARK: LIFECYCLES
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         setUpSubviews()
         self.view.backgroundColor = .white
         favoritesCollectionView.delegate = self
@@ -119,12 +117,12 @@ extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let currentFaves = faves[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath) as! FavoritesCell
-        //let selectedFavorite = data[indexPath.row]
         
         cell.delegate = self
         
         cell.weeksOnLabel.text = "\(currentFaves.weeksOnList) weeks on best seller list"
-        
+        cell.summaryLabel.text = currentFaves.bookInfo[0].bookDetailDescription
+    
         ImageHelper.shared.getImage(urlStr: currentFaves.image) { (result) in
             DispatchQueue.main.async {
                 switch result {
@@ -140,7 +138,7 @@ extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 400, height: 400)
+        return CGSize(width: 400, height: 500)
         
     }
 }
