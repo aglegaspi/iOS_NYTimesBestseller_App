@@ -48,7 +48,7 @@ class FavoritesVC: UIViewController, CellDelegate {
     
     lazy var favoritesCollectionView: UICollectionView = {
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0)
         return collectionView
     }()
     
@@ -62,6 +62,7 @@ class FavoritesVC: UIViewController, CellDelegate {
         favoritesCollectionView.dataSource = self
         favoritesCollectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "favoriteCell")
         setUpConstraints()
+        setGradientBackground(colorBottom: .systemRed, colorTop: .white)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +87,16 @@ class FavoritesVC: UIViewController, CellDelegate {
         favoritesHeaderLabelConstraints()
         favoritesCollectionViewConstraints()
     }
+    
+    private func setGradientBackground(colorBottom: UIColor, colorTop: UIColor){
+           let gradientLayer = CAGradientLayer()
+           gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
+           gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+           gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+           gradientLayer.locations = [NSNumber(floatLiteral: 0.0), NSNumber(floatLiteral: 1.0)]
+           gradientLayer.frame = view.bounds
+         self.view.layer.insertSublayer(gradientLayer, at: 0)
+       }
     
     private func favoritesHeaderLabelConstraints() {
         favoritesHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
