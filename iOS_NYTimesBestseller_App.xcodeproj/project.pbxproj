@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DFEF9AC235F471200A19D56 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFEF9AB235F471200A19D56 /* Secrets.swift */; };
 		3C855D49235DF643007F85C7 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C855D48235DF643007F85C7 /* Secrets.swift */; };
 		EC216421235A4EAC0005335F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216420235A4EAC0005335F /* AppDelegate.swift */; };
 		EC216423235A4EAC0005335F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC216422235A4EAC0005335F /* SceneDelegate.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1DFEF9AB235F471200A19D56 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		3C855D48235DF643007F85C7 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		EC21641D235A4EAC0005335F /* iOS_NYTimesBestseller_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_NYTimesBestseller_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC216420235A4EAC0005335F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				EC216454235A50880005335F /* BookDetail.swift */,
 				ECF93374235E3908002B5CBD /* Image.swift */,
 				3C855D48235DF643007F85C7 /* Secrets.swift */,
+				1DFEF9AB235F471200A19D56 /* Secrets.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC216450235A50400005335F /* BestSellersCell.swift in Sources */,
+				1DFEF9AC235F471200A19D56 /* Secrets.swift in Sources */,
 				EC216466235A52000005335F /* FavoritePersistenceHelper.swift in Sources */,
 				EC216468235A52E80005335F /* AppError.swift in Sources */,
 				EC216461235A51300005335F /* UserDefaultsWrapper.swift in Sources */,
@@ -344,7 +348,6 @@
 				EC8A8470235CE50C00851CC8 /* NetworkManager.swift in Sources */,
 				EC8A846D235CE3CB00851CC8 /* BestSellerAPIClient.swift in Sources */,
 				ECF93379235E3C5B002B5CBD /* ImageAPIClient.swift in Sources */,
-				EC8A846E235CE4FC00851CC8 /* Secrets.swift in Sources */,
 				EC8A846F235CE50300851CC8 /* AppError.swift in Sources */,
 				EC8A846C235CE3A500851CC8 /* BestSeller.swift in Sources */,
 				EC8A8465235CDAA300851CC8 /* iOS_NYTimesBestseller_AppTests.swift in Sources */,

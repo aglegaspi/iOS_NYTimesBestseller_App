@@ -19,6 +19,7 @@ struct BestSeller: Codable {
     let rank, weeksOnList: Int?
     let isbns: [Isbn]?
     let bookInfo: [BookInfo]?
+    let date: Date
     
     enum CodingKeys: String, CodingKey {
         case listName = "list_name"
@@ -28,6 +29,7 @@ struct BestSeller: Codable {
         case weeksOnList = "weeks_on_list"
         case isbns
         case bookInfo = "book_details"
+        case date
     }
     
     static func getBestSellers(from data: Data) throws -> [BestSeller]? {
