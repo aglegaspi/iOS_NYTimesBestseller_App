@@ -38,6 +38,8 @@ class FavoritesCell: UICollectionViewCell {
         var label = UITextView()
         label.textAlignment = .center
         label.font = UIFont(name: "Arial", size: 15)
+        label.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0)
+
         label.isEditable = false
         return label
     }()
