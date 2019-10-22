@@ -11,5 +11,5 @@ import Foundation
 struct Favorites: Codable {
     let weeksOnList: Int
     let bookInfo: [BookInfo]
-//    let image: String
+    let image: String
 }
