@@ -9,23 +9,21 @@
 import UIKit
 
 protocol CellDelegate: AnyObject {
-   func showActionSheet(tag: Int)
+    func showActionSheet(tag: Int)
 }
 
 class FavoritesVC: UIViewController, CellDelegate {
     
     func showActionSheet(tag: Int) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction.init(title: "Delete", style: .destructive) { (action) in
+        }
         
-                let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-                let deleteAction = UIAlertAction.init(title: "Delete", style: .destructive) { (action) in
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
         
-                }
-        
-                let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
-        
-                actionSheet.addAction(cancelAction)
-                actionSheet.addAction(deleteAction)
-                present(actionSheet, animated: true, completion: nil)
+        actionSheet.addAction(cancelAction)
+        actionSheet.addAction(deleteAction)
+        present(actionSheet, animated: true, completion: nil)
     }
     
     
@@ -35,8 +33,8 @@ class FavoritesVC: UIViewController, CellDelegate {
     lazy var favoritesHeaderLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .white
-          label.text = "Favorites ()"
-          label.textAlignment = .center
+        label.text = "Favorites ()"
+        label.textAlignment = .center
         label.font = UIFont(name: "AvenirNext-Regular", size: 30)
         return label
     }()
@@ -44,7 +42,7 @@ class FavoritesVC: UIViewController, CellDelegate {
     lazy var favoritesCollectionView: UICollectionView = {
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.backgroundColor = .white
-//        collectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "favoriteCell")
+        //        collectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "favoriteCell")
         return collectionView
     }()
     
@@ -52,16 +50,11 @@ class FavoritesVC: UIViewController, CellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSubviews()
-
         self.view.backgroundColor = .white
         favoritesCollectionView.delegate = self
         favoritesCollectionView.dataSource = self
         favoritesCollectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "favoriteCell")
-
         setUpConstraints()
-        
-        
-        
     }
     
     private func setUpSubviews() {
@@ -102,9 +95,6 @@ extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
         return self.data.count
     }
     
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCell", for: indexPath) as! FavoritesCell
         //let selectedFavorite = data[indexPath.row]
@@ -114,10 +104,9 @@ extension FavoritesVC: UICollectionViewDataSource, UICollectionViewDelegate, UIC
         return cell
     }
     
-   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 400, height: 400)
-  
-         }
+        return CGSize(width: 400, height: 400)
+        
     }
+}
 

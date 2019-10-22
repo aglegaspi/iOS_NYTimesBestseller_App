@@ -138,7 +138,7 @@ class DetailVC: UIViewController {
         }
         
         self.present(confirmationAlert, animated: true)
-    
+        
     }
     
     @objc private func doneButtonPressed() {
