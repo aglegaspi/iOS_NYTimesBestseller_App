@@ -11,32 +11,29 @@ import Foundation
 
 // MARK: - ImageWrapper
 struct ImageWrapper: Codable {
-    let items: [Image]?
-    
+    let results: Results?
 }
 
-// MARK: - Item
+// MARK: - Results
+struct Results: Codable {
+    let books: [Image]?
+
+}
+
+// MARK: - Book
 struct Image: Codable {
-    let volumeInfo: VolumeInf?
+    let bookImage: String?
+
+    enum CodingKeys: String, CodingKey {
+        case bookImage = "book_image"
+    }
     
-    static func getImage(from data: Data) throws -> [Image]? {
-        // TODO:
+    static func getImages(from data: Data) throws -> [Image]? {
         do {
             let response = try JSONDecoder().decode(ImageWrapper.self,from: data)
-            return response.items
+            return response.results?.books
         } catch {
             return nil
         }
-        
     }
-}
-
-// MARK: - VolumeInfo
-struct VolumeInf: Codable {
-    let imageLinks: ImageLink?
-}
-
-// MARK: - ImageLinks
-struct ImageLink: Codable {
-    let smallThumbnail, thumbnail: String?
 }
