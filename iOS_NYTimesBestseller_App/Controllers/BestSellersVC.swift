@@ -202,6 +202,26 @@ extension BestSellersVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 200, height: 300)
     }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    print("cell pressed")
+    let dvc = DetailVC()
+    dvc.modalPresentationStyle = .currentContext
+    let selectedBook = bestsellers[indexPath.row]
+    dvc.bestSeller = selectedBook
+    self.present(dvc, animated: true, completion: nil)
+
+    
+    
+//    let bookSelected = bestsellers[indexPath.row]
+//    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//
+//    let DetailVC = storyboard.instantiateViewController(withIdentifier:"DetailViewController") as! DetailVC
+//    DetailVC.bestSeller = bookSelected
+//
+//    self.navigationController?.pushViewController(DetailVC,animated: true)
+  }
+  
 }
 
 
