@@ -33,7 +33,10 @@ class BestSellersVC: UIViewController {
     //MARK: VIEWS
     lazy var bestSellersHeaderLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .red
+        label.backgroundColor = .white
+        label.text = "Best Sellers"
+        label.textAlignment = .center
+      label.font = UIFont(name: "AvenirNext-Regular", size: 30)
         return label
     }()
     
@@ -41,7 +44,7 @@ class BestSellersVC: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
-        collectionView.backgroundColor = .yellow
+        collectionView.backgroundColor = .opaqueSeparator
         collectionView.register(BestSellersCell.self, forCellWithReuseIdentifier: "bestSellersCell")
         return collectionView
     }()
@@ -134,7 +137,7 @@ class BestSellersVC: UIViewController {
             bestSellersHeaderLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             bestSellersHeaderLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             bestSellersHeaderLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            bestSellersHeaderLabel.heightAnchor.constraint(equalToConstant: 30)
+            bestSellersHeaderLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -144,7 +147,7 @@ class BestSellersVC: UIViewController {
             bestSellersCollectionView.topAnchor.constraint(equalTo: bestSellersHeaderLabel.bottomAnchor),
             bestSellersCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             bestSellersCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            bestSellersCollectionView.heightAnchor.constraint(equalToConstant: 300)
+            bestSellersCollectionView.heightAnchor.constraint(equalToConstant: 400)
         ])
     }
     
@@ -179,7 +182,7 @@ extension BestSellersVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         let book = bestsellers[indexPath.row]
         guard let imageURL = images[indexPath.row].bookImage else { fatalError() }
         
-        cell.weeksOnLabel.text = "\(book.weeksOnList ?? 0) weeks on Best Seller List"
+        cell.weeksOnLabel.text = "\(book.weeksOnList ?? 0) weeks as best seller"
         cell.descriptionLabel.text = book.bookInfo?[0].bookDetailDescription
         
         ImageHelper.shared.getImage(urlStr: imageURL) { (result) in
