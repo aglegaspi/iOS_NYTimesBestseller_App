@@ -12,7 +12,9 @@ class DetailVC: UIViewController {
   
   
   var bestSeller: BestSeller!
-
+  
+  var bestSellerImage: Image!
+    
    //MARK: -- Properties
    
    lazy var navigationBar: UINavigationBar = {
@@ -30,12 +32,12 @@ class DetailVC: UIViewController {
        return button
    }()
    
-   lazy var bookImage: UIImageView = {
+   lazy var bookImageView: UIImageView = {
        let image = UIImage()
        let imageView = UIImageView(image: image)
        imageView.contentMode = .scaleAspectFit
-//    imageView.image = 
-       return imageView
+      getImage()
+      return imageView
    }()
    
    lazy var authorLabel: UILabel = {
@@ -53,7 +55,6 @@ class DetailVC: UIViewController {
        return textView
    }()
    
-//   let placeholderText = "The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly but gets faster each minute after you hear this signal bodeboop. A sing lap should be completed every time you hear this sound. ding Remember to run in a straight line and run as long as possible. The second time you fail to complete a lap before the sound, your test is over. The test will begin on the word start. On your mark. Get ready!… Start. ding﻿"
    
    //MARK: -- View Did Load
    
@@ -69,19 +70,19 @@ class DetailVC: UIViewController {
    
    //MARK: -- Functions
   
-//  func loadImage () {
-//    guard let imageURL = images.bookImage else { fatalError() }
-//    ImageHelper.shared.getImage(urlStr: imageURL) { (result) in
+  
+  func getImage() {
+//    ImageHelper.shared.getImage(urlStr: bestSellerImage.bookImage!) { (result) in
 //        DispatchQueue.main.async {
 //            switch result {
 //            case .success (let image):
-//                cell.bestSellerImage.image = image
+//              self.bookImageView.image = image
 //            case .failure(let error):
 //                print(error)
 //            }
 //        }
 //    }
-//  }
+  }
    
    private func setUpMiscellaneousThings() {
        
@@ -89,7 +90,7 @@ class DetailVC: UIViewController {
    }
    
    private func addSubviews() {
-       self.view.addSubview(bookImage)
+       self.view.addSubview(bookImageView)
        self.view.addSubview(authorLabel)
        self.view.addSubview(summary)
        self.view.addSubview(navigationBar)
@@ -123,13 +124,13 @@ class DetailVC: UIViewController {
        
        
        //bookImage Constraints
-       bookImage.translatesAutoresizingMaskIntoConstraints = false
+       bookImageView.translatesAutoresizingMaskIntoConstraints = false
        
        NSLayoutConstraint.activate([
-           bookImage.widthAnchor.constraint(equalToConstant: 300),
-           bookImage.heightAnchor.constraint(equalToConstant: 400),
-           bookImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-           bookImage.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0)
+           bookImageView.widthAnchor.constraint(equalToConstant: 300),
+           bookImageView.heightAnchor.constraint(equalToConstant: 400),
+           bookImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+           bookImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0)
        ])
        
        //authorLabel Constraints
@@ -138,7 +139,7 @@ class DetailVC: UIViewController {
        NSLayoutConstraint.activate([
            authorLabel.widthAnchor.constraint(equalToConstant: 400),
            authorLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
-           authorLabel.topAnchor.constraint(equalTo: bookImage.bottomAnchor, constant: 10)
+           authorLabel.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 10)
        ])
        
        //bookSummary Constraints
