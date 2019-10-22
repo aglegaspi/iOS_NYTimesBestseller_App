@@ -34,9 +34,21 @@ class DetailVC: UIViewController {
     
     lazy var bookImageView: UIImageView = {
         let image = UIImage()
+        
+        ImageHelper.shared.getImage(urlStr: bestSellerImage.bookImage!) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success (let image):
+                  self.bookImageView.image = image
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
-        getImage()
+        
         return imageView
     }()
     
@@ -64,30 +76,9 @@ class DetailVC: UIViewController {
         setUpNavBarWithButtons()
         addSubviews()
         setConstraints()
-        //      setUpMiscellaneousThings()
-        
     }
     
     //MARK: -- Functions
-    
-    
-    func getImage() {
-        //    ImageHelper.shared.getImage(urlStr: bestSellerImage.bookImage!) { (result) in
-        //        DispatchQueue.main.async {
-        //            switch result {
-        //            case .success (let image):
-        //              self.bookImageView.image = image
-        //            case .failure(let error):
-        //                print(error)
-        //            }
-        //        }
-        //    }
-    }
-    
-    private func setUpMiscellaneousThings() {
-        
-        //       bookImage.image = #imageLiteral(resourceName: "placeholder")
-    }
     
     private func addSubviews() {
         self.view.addSubview(bookImageView)
@@ -97,7 +88,7 @@ class DetailVC: UIViewController {
     }
     
     private func setUpNavBarWithButtons() {
-        let navigationItem = UINavigationItem(title: "look at this book")
+        let navigationItem = UINavigationItem(title: (self.bestSeller.bookInfo?[0].title)!)
         navigationItem.rightBarButtonItem = favoritesButton
         navigationItem.leftBarButtonItem = doneButton
         navigationBar.setItems([navigationItem], animated: true)
