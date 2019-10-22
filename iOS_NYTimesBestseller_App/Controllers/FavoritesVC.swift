@@ -34,14 +34,16 @@ class FavoritesVC: UIViewController, CellDelegate {
     //MARK: VIEWS
     lazy var favoritesHeaderLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .systemPurple
-        label.text = "Favorites ()"
+        label.backgroundColor = .white
+          label.text = "Favorites ()"
+          label.textAlignment = .center
+        label.font = UIFont(name: "AvenirNext-Regular", size: 30)
         return label
     }()
     
     lazy var favoritesCollectionView: UICollectionView = {
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.backgroundColor = .cyan
+        collectionView.backgroundColor = .white
 //        collectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "favoriteCell")
         return collectionView
     }()
@@ -51,7 +53,7 @@ class FavoritesVC: UIViewController, CellDelegate {
         super.viewDidLoad()
         setUpSubviews()
 
-        self.view.backgroundColor = .cyan
+        self.view.backgroundColor = .white
         favoritesCollectionView.delegate = self
         favoritesCollectionView.dataSource = self
         favoritesCollectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: "favoriteCell")

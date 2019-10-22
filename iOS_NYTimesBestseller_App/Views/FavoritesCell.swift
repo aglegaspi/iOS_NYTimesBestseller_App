@@ -14,9 +14,10 @@ class FavoritesCell: UICollectionViewCell {
     
     lazy var settingsButton: UIButton = {
         var settingsButton = UIButton()
-//        settingsButton.backgroundColor = .systemPink
+//        settingsButton.backgroundColor = .gray
         settingsButton.setTitle("...", for: .normal)
-        settingsButton.titleLabel?.font = .systemFont(ofSize: 50)
+        settingsButton.setTitleColor(.black, for: .normal)
+        settingsButton.titleLabel?.font = .systemFont(ofSize: 40)
         settingsButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return settingsButton
     }()
@@ -39,9 +40,9 @@ class FavoritesCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var favoritesImage: UIView = {
-        var image = UIView()
-        image.backgroundColor  = .black
+    lazy var favoritesImage: UIImageView = {
+        var image = UIImageView()
+        image.backgroundColor  = .systemGray
         return image
     }()
     
@@ -73,8 +74,8 @@ class FavoritesCell: UICollectionViewCell {
         settingsButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             settingsButton.topAnchor.constraint(equalTo: favoritesImage.topAnchor, constant: 0),
-            settingsButton.leadingAnchor.constraint(equalTo: favoritesImage.trailingAnchor, constant: 20),
-            settingsButton.heightAnchor.constraint(equalToConstant: 30),
+            settingsButton.leadingAnchor.constraint(equalTo: favoritesImage.trailingAnchor, constant: 30),
+            settingsButton.heightAnchor.constraint(equalToConstant: 40),
             settingsButton.trailingAnchor.constraint(equalTo: self.trailingAnchor)
             
             
