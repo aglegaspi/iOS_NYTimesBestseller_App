@@ -23,13 +23,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         
         let bestsellers = BestSellersVC()
-        bestsellers.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
+      bestsellers.tabBarItem = UITabBarItem(title: "NYT Best Sellers", image: UIImage(systemName: "rosette"), tag: 0)
         
         let favorites = FavoritesVC()
-        favorites.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        favorites.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "bookmark"), tag: 1)
         
         let settings = SettingsVC()
-        settings.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 2)
+        settings.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 2)
         
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [bestsellers, favorites, settings]
