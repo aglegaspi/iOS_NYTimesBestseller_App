@@ -85,7 +85,7 @@ class BestSellersVC: UIViewController {
     //MARK: PRIVATE FUNCTIONS
     
     private func loadUserDefaults() {
-        print(UserDefaultsWrapper.manager.getCategory()!)
+        print(UserDefaultsWrapper.manager.getCategory() ?? "nothing stored in UD")
         
         if let selected_catgory = UserDefaultsWrapper.manager.getCategory() {
             default_category = selected_catgory
@@ -250,7 +250,9 @@ extension BestSellersVC: UICollectionViewDelegate, UICollectionViewDataSource, U
         let dvc = DetailVC()
         dvc.modalPresentationStyle = .currentContext
         let selectedBook = bestsellers[indexPath.row]
+        let selectedImage = images[indexPath.row]
         dvc.bestSeller = selectedBook
+        dvc.bestSellerImage = selectedImage
         self.present(dvc, animated: true, completion: nil)
         
     }
