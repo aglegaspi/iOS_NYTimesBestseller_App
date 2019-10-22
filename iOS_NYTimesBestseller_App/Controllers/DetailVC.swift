@@ -56,6 +56,7 @@ class DetailVC: UIViewController {
         let label = UILabel()
         label.text = bestSeller.bookInfo?[0].author
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.bold)
         return label
     }()
     
@@ -63,7 +64,8 @@ class DetailVC: UIViewController {
         let textView = UITextView()
         textView.text = bestSeller.bookInfo?[0].bookDetailDescription
         textView.textAlignment = .left
-        textView.font = UIFont(name: "Arial", size: 15)
+        textView.font = UIFont(name: "Arial", size: 20)
+        textView.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0)
         return textView
     }()
     
@@ -72,11 +74,12 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setUpNavBarWithButtons()
         addSubviews()
         setConstraints()
+        setGradientBackground(colorBottom: .systemGreen, colorTop: .white)
     }
+  
     
     //MARK: -- Functions
     
@@ -86,6 +89,17 @@ class DetailVC: UIViewController {
         self.view.addSubview(summary)
         self.view.addSubview(navigationBar)
     }
+  
+  private func setGradientBackground(colorBottom: UIColor, colorTop: UIColor){
+       let gradientLayer = CAGradientLayer()
+       gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
+       gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+       gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+       gradientLayer.locations = [NSNumber(floatLiteral: 0.0), NSNumber(floatLiteral: 1.0)]
+       gradientLayer.frame = view.bounds
+
+     self.view.layer.insertSublayer(gradientLayer, at: 0)
+   }
     
     private func setUpNavBarWithButtons() {
         let navigationItem = UINavigationItem(title: (self.bestSeller.bookInfo?[0].title)!)
@@ -165,17 +179,17 @@ class DetailVC: UIViewController {
         NSLayoutConstraint.activate([
             authorLabel.widthAnchor.constraint(equalToConstant: 400),
             authorLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
-            authorLabel.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 10)
+            authorLabel.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 15)
         ])
         
         //bookSummary Constraints
         summary.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            summary.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            summary.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            summary.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            summary.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             summary.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
-            summary.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 15),
+            summary.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 20),
             summary.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -40)
             
         ])

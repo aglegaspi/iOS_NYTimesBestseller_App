@@ -45,7 +45,7 @@ class BestSellersVC: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
-        collectionView.backgroundColor = .opaqueSeparator
+      collectionView.backgroundColor = UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 0.0)
         collectionView.register(BestSellersCell.self, forCellWithReuseIdentifier: "bestSellersCell")
         return collectionView
     }()
@@ -62,11 +62,16 @@ class BestSellersVC: UIViewController {
         loadListOfCategories()
     
         setUpSubviews()
-        self.view.backgroundColor = .white
+//        self.view.backgroundColor = .white
         setupDelegatesAndDataSource()
         setUpConstraints()
         
     }
+  
+  override func viewDidAppear(_ animated: Bool) {
+      super.viewDidAppear(animated)
+    setGradientBackground(colorBottom: #colorLiteral(red: 255/255, green: 231/255, blue: 172/255, alpha: 1.0), colorTop: .white)
+  }
     
     //MARK: SETUP FUNCTIONS
     private func setUpSubviews() {
@@ -81,6 +86,17 @@ class BestSellersVC: UIViewController {
         bestSellersPicker.delegate = self
         bestSellersPicker.dataSource = self
     }
+  
+  private func setGradientBackground(colorBottom: UIColor, colorTop: UIColor){
+       let gradientLayer = CAGradientLayer()
+       gradientLayer.colors = [colorBottom.cgColor, colorTop.cgColor]
+       gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
+       gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
+       gradientLayer.locations = [NSNumber(floatLiteral: 0.0), NSNumber(floatLiteral: 1.0)]
+       gradientLayer.frame = view.bounds
+
+     self.view.layer.insertSublayer(gradientLayer, at: 0)
+   }
     
     //MARK: PRIVATE FUNCTIONS
     
